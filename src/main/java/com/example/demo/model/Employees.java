@@ -35,20 +35,20 @@ public class Employees {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_employee")
-    private List<OpinionTrainer> opinionTrainers;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_employee")
+//    private List<OpinionTrainer> opinionTrainers;
 
     public Employees() {
     }
 
-    public List<OpinionTrainer> getOpinionTrainers() {
-        return opinionTrainers;
-    }
-
-    public void setOpinionTrainers(List<OpinionTrainer> opinionTrainers) {
-        this.opinionTrainers = opinionTrainers;
-    }
+//    public List<OpinionTrainer> getOpinionTrainers() {
+//        return opinionTrainers;
+//    }
+//
+//    public void setOpinionTrainers(List<OpinionTrainer> opinionTrainers) {
+//        this.opinionTrainers = opinionTrainers;
+//    }
 
     public Integer getIdEmployee() {
         return idEmployee;
