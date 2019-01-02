@@ -3,20 +3,16 @@ package com.example.demo.resorce;
 
 import com.example.demo.model.exercises.Exercise;
 import com.example.demo.model.exercises.ExercisesOnOneDay;
-//import com.example.demo.model.exercises.ExercisesOnSevenDays;
-//import com.example.demo.model.exercises.ExercisesOnSevenDays;
 import com.example.demo.model.exercises.ExercisesOnSevenDays;
 import com.example.demo.repository.exercises.ExercisesOnOneDayRepository;
-//import com.example.demo.repository.exercises.ExercisesOnSevenDaysRepository;
 import com.example.demo.repository.exercises.ExercisesOnSevenDaysRepository;
-import javafx.scene.input.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping(value = "/exercises/users")
@@ -26,11 +22,11 @@ public class SendExerciseResource {
         @Autowired
         ExercisesOnOneDayRepository exercisesOnOneDayRepository;
 
-    @GetMapping(value = "/show")
-    public List<ExercisesOnSevenDays> showelement() {
-        return exercisesOnSevenDaysRepository.findAll();
-    }
-
+//    @GetMapping(value = "/show")
+//    public List<ExercisesOnSevenDays> showelement() {
+//        return exercisesOnSevenDaysRepository.findAll();
+//    }
+//
 //    @RequestMapping(value="/take/{query}", method = RequestMethod.GET)
 //    public List<ExercisesOnOneDay> getData(@PathVariable("query") String query) {
 //        String[] split = query.split(":");
