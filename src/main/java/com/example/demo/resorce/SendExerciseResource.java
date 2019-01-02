@@ -31,19 +31,19 @@ public class SendExerciseResource {
         return exercisesOnSevenDaysRepository.findAll();
     }
 
-    @RequestMapping(value="/take/{query}", method = RequestMethod.GET)
-    public List<ExercisesOnOneDay> getData(@PathVariable("query") String query) {
-        String[] split = query.split(":");
-        String id = split[0];
-        String dataStart = split[1];
-        String dataEnd = split[2];
-        System.out.println("dataEnd = " + dataEnd);
-        System.out.println("dataStart = " + dataStart);
-        System.out.println("id = " + id);
-        return exercisesOnOneDayRepository.findAllByIdExerciseOneDayAndDAndDateDayBetween(Integer.parseInt(id),Date.valueOf(dataStart),Date.valueOf(dataEnd));
-
-
-    }
+//    @RequestMapping(value="/take/{query}", method = RequestMethod.GET)
+//    public List<ExercisesOnOneDay> getData(@PathVariable("query") String query) {
+//        String[] split = query.split(":");
+//        String id = split[0];
+//        String dataStart = split[1];
+//        String dataEnd = split[2];
+//        System.out.println("dataEnd = " + dataEnd);
+//        System.out.println("dataStart = " + dataStart);
+//        System.out.println("id = " + id);
+//        return exercisesOnOneDayRepository.findAllByIdExerciseOneDayAndDAndDateDayBetween(Integer.parseInt(id),Date.valueOf(dataStart),Date.valueOf(dataEnd));
+//
+//
+//    }
 
         @GetMapping(value = "/load")
         public List<ExercisesOnSevenDays> getAll() {
