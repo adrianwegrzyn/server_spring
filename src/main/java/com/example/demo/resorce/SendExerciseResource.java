@@ -22,10 +22,10 @@ public class SendExerciseResource {
         @Autowired
         ExercisesOnOneDayRepository exercisesOnOneDayRepository;
 
-//    @GetMapping(value = "/show")
-//    public List<ExercisesOnSevenDays> showelement() {
-//        return exercisesOnSevenDaysRepository.findAll();
-//    }
+    @GetMapping(value = "/show")
+    public List<ExercisesOnSevenDays> showPlainAllDays() {
+        return exercisesOnSevenDaysRepository.findAll();
+    }
 //
 //    @RequestMapping(value="/take/{query}", method = RequestMethod.GET)
 //    public List<ExercisesOnOneDay> getData(@PathVariable("query") String query) {
