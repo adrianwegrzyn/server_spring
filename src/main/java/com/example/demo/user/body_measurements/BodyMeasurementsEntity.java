@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "body_measurements",schema = "public")
+@Table(name = "body_measurements",schema = "users")
 public class BodyMeasurementsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

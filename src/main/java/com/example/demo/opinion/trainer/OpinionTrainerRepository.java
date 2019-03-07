@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface OpinionTrainerRepository extends JpaRepository<OpinionTrainerEntity,Integer> {
-    List<OpinionTrainerEntity> findAllByTrainerId(int id);
+//    List<OpinionTrainerEntity> findAllByTrainerId(int id);
 
 }

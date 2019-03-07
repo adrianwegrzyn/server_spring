@@ -3,7 +3,7 @@ package com.example.demo.opinion.trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/opinion")
@@ -16,7 +16,7 @@ public class OpinionTrainerController {
     }
 
     @RequestMapping(value="/trainer/{id}", method = RequestMethod.GET)
-    public List<OpinionTrainerEntity> getOpinionTrainer(@PathVariable("id") String id){
+    public Optional<OpinionTrainerEntity> getOpinionTrainer(@PathVariable("id") String id){
         return opinionTrainerServices.getOpinionTrainer(id);
     }
 

@@ -1,23 +1,24 @@
 package com.example.demo.opinion.trainer;
 
+import com.example.demo.employee.trainer.TrainerDto;
+import com.example.demo.employee.trainer.TrainerEntity;
+
 import java.util.Date;
 
 public class OpinionTrainerDto {
-    private int opinionTrainerId;
     private int userId;
     private int trainerId;
     private Date date;
     private String message;
 
+
     public OpinionTrainerDto(){
     }
 
-    public int getOpinionTrainerId() {
-        return opinionTrainerId;
-    }
-    public void setOpinionTrainerId(int opinionTrainerId) {
-        this.opinionTrainerId = opinionTrainerId;
-    }
+
+
+
+
     public int getUserId() {
         return userId;
     }

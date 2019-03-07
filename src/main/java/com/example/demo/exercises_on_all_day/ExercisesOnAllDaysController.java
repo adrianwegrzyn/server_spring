@@ -1,132 +1,146 @@
-package com.example.demo.exercises_on_one_day;
+package com.example.demo.exercises_on_all_day;
 
 
 
-import com.example.demo.exercises_on_all_day.ExercisesOnAllDaysDAO;
-import com.example.demo.exercises_on_all_day.ExercisesOnAllDaysRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
 import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/exercises/users")
-public class ExercisesOnOneDayController {
+@RequestMapping(value = "/users/exercises")
+public class ExercisesOnAllDaysController {
+    private final ExercisesOnAllDaysService exercisesOnAllDaysService;
     @Autowired
-    ExercisesOnAllDaysRepository exercisesOnSevenDaysRepository;
-    @Autowired
-    ExercisesOnOneDayRepository exercisesOnOneDayRepository;
+    ExercisesOnAllDaysRepository exercisesOnAllDaysRepository;
 
-    @GetMapping(value = "/show")
-    public List<ExercisesOnAllDaysDAO> getShowPlainAllDays() {
-        return exercisesOnSevenDaysRepository.findAll();
+    @Autowired
+    public ExercisesOnAllDaysController(ExercisesOnAllDaysService exercisesOnAllDaysService) {
+        this.exercisesOnAllDaysService = exercisesOnAllDaysService;
     }
 
-    @RequestMapping(value = "/take/{query}", method = RequestMethod.GET)
-    public List<ExercisesOnOneDayDAO> getFlexPlain(@PathVariable("query") String query) {
-        String[] split = query.split(":");
-        String id = split[0];
-        String dataStart = split[1];
-        String dataEnd = split[2];
-        System.out.println("dataEnd = " + dataEnd);
-        System.out.println("dataStart = " + dataStart);
-        System.out.println("id = " + id);
-        return exercisesOnOneDayRepository.findAllByIdExerciseOneDayAndDAndDateDayBetween(Integer.parseInt(id), Date.valueOf(dataStart), Date.valueOf(dataEnd));
 
+//    @GetMapping(value = "/show")
+//    public List<ExercisesOnAllDaysEntity> getShowPlainAllDays() {
+//        return exercisesOnSevenDaysRepository.findAll();
+//    }
+//
+//    @RequestMapping(value = "/take/{query}", method = RequestMethod.GET)
+//    public List<ExercisesOnOneDayEntity> getFlexPlain(@PathVariable("query") String query) {
+//        String[] split = query.split(":");
+//        String id = split[0];
+//        String dataStart = split[1];
+//        String dataEnd = split[2];
+//        System.out.println("dataEnd = " + dataEnd);
+//        System.out.println("dataStart = " + dataStart);
+//        System.out.println("id = " + id);
+//        return exercisesOnOneDayRepository.findAllByIdExerciseOneDayAndDAndDateDayBetween(Integer.parseInt(id), Date.valueOf(dataStart), Date.valueOf(dataEnd));
+//
+//
+//    }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public List<ExercisesOnAllDaysEntity> createPlanForUser (@RequestBody ExercisesOnAllDaysDto exercisesOnAllDaysDto ) {
+        exercisesOnAllDaysService.createPlanForUser(exercisesOnAllDaysDto);
+        return exercisesOnAllDaysRepository.findAll();
     }
+
+
+
 }
 
+
+
+
 //       ise("martwy").setRepetitions(10).setSeries(2);
-//            Exercise exercise14 = ne @GetMapping(value = "/load")
-//        public List<com.example.demo.exercises_on_all_day.ExercisesOnAllDaysDAO> getAll() {
-//            com.example.demo.exercises_on_all_day.ExercisesOnAllDaysDAO exerciseOnSewenDays = new com.example.demo.exercises_on_all_day.ExercisesOnAllDaysDAO();
-//            ExercisesOnAllDaysDAO exercisesOnOneDayDAO1 = new ExercisesOnAllDaysDAO();
-//            ExercisesOnAllDaysDAO exercisesOnOneDayDAO2 = new ExercisesOnAllDaysDAO();
-//            ExercisesOnAllDaysDAO exercisesOnOneDayDAO3 = new ExercisesOnAllDaysDAO();
-//            ExercisesOnAllDaysDAO exercisesOnOneDayDAO4 = new ExercisesOnAllDaysDAO();
-//            ExercisesOnAllDaysDAO exercisesOnOneDayDAO5 = new ExercisesOnAllDaysDAO();
-//            ExercisesOnAllDaysDAO exercisesOnOneDayDAO6 = new ExercisesOnAllDaysDAO();
-//            ExercisesOnAllDaysDAO exercisesOnOneDayDAO7 = new ExercisesOnAllDaysDAO();
-//            Exercise exercise1 = new Exercise();
+//            ExerciseDto exercise14 = ne @GetMapping(value = "/load")
+//        public List<com.example.demo.exercises_on_all_day.ExercisesOnAllDaysEntity> getAll() {
+//            com.example.demo.exercises_on_all_day.ExercisesOnAllDaysEntity exerciseOnSewenDays = new com.example.demo.exercises_on_all_day.ExercisesOnAllDaysEntity();
+//            ExercisesOnAllDaysEntity exercisesOnOneDayDAO1 = new ExercisesOnAllDaysEntity();
+//            ExercisesOnAllDaysEntity exercisesOnOneDayDAO2 = new ExercisesOnAllDaysEntity();
+//            ExercisesOnAllDaysEntity exercisesOnOneDayDAO3 = new ExercisesOnAllDaysEntity();
+//            ExercisesOnAllDaysEntity exercisesOnOneDayDAO4 = new ExercisesOnAllDaysEntity();
+//            ExercisesOnAllDaysEntity exercisesOnOneDayDAO5 = new ExercisesOnAllDaysEntity();
+//            ExercisesOnAllDaysEntity exercisesOnOneDayDAO6 = new ExercisesOnAllDaysEntity();
+//            ExercisesOnAllDaysEntity exercisesOnOneDayDAO7 = new ExercisesOnAllDaysEntity();
+//            ExerciseDto exercise1 = new ExerciseDto();
 //
 //                        exercise1.setNameExercise("brzuszki").setRepetitions(20).setSeries(3);
-//                Exercise exercise2 = new Exercise();
+//                ExerciseDto exercise2 = new ExerciseDto();
 //                        exercise2.setNameExercise("przysiady").setRepetitions(12).setSeries(5);
-//                Exercise exercise3 = new Exercise();
+//                ExerciseDto exercise3 = new ExerciseDto();
 //                        exercise3.setNameExercise("martwy").setRepetitions(10).setSeries(2);
-//                Exercise exercise4 = new Exercise();
+//                ExerciseDto exercise4 = new ExerciseDto();
 //                        exercise4.setNameExercise("kolana").setRepetitions(8).setSeries(4);
-//                Exercise exercise5 = new Exercise();
+//                ExerciseDto exercise5 = new ExerciseDto();
 //                        exercise5.setNameExercise("podciaganie").setRepetitions(12).setSeries(3);
 //
-//            Exercise exercise6 = new Exercise();
+//            ExerciseDto exercise6 = new ExerciseDto();
 //            exercise6.setNameExercise("brzuszki").setRepetitions(20).setSeries(3);
-//            Exercise exercise7 = new Exercise();
+//            ExerciseDto exercise7 = new ExerciseDto();
 //            exercise7.setNameExercise("przysiady").setRepetitions(12).setSeries(5);
-//            Exercise exercise8 = new Exercise();
+//            ExerciseDto exercise8 = new ExerciseDto();
 //            exercise8.setNameExercise("martwy").setRepetitions(10).setSeries(2);
-//            Exercise exercise9 = new Exercise();
+//            ExerciseDto exercise9 = new ExerciseDto();
 //            exercise9.setNameExercise("kolana").setRepetitions(8).setSeries(4);
-//            Exercise exercise10 = new Exercise();
+//            ExerciseDto exercise10 = new ExerciseDto();
 //            exercise10.setNameExercise("podciaganie").setRepetitions(12).setSeries(3);
 //
-//            Exercise exercise11 = new Exercise();
+//            ExerciseDto exercise11 = new ExerciseDto();
 //            exercise11.setNameExercise("brzuszki").setRepetitions(20).setSeries(3);
-//            Exercise exercise12 = new Exercise();
+//            ExerciseDto exercise12 = new ExerciseDto();
 //            exercise12.setNameExercise("przysiady").setRepetitions(12).setSeries(5);
-//            Exercise exercise13 = new Exercise();
-//            exercise13.setNameExercw Exercise();
+//            ExerciseDto exercise13 = new ExerciseDto();
+//            exercise13.setNameExercw ExerciseDto();
 //            exercise14.setNameExercise("kolana").setRepetitions(8).setSeries(4);
-//            Exercise exercise15 = new Exercise();
+//            ExerciseDto exercise15 = new ExerciseDto();
 //            exercise15.setNameExercise("podciaganie").setRepetitions(12).setSeries(3);
 //
-//            Exercise exercise16 = new Exercise();
+//            ExerciseDto exercise16 = new ExerciseDto();
 //            exercise16.setNameExercise("brzuszki").setRepetitions(20).setSeries(3);
-//            Exercise exercise17 = new Exercise();
+//            ExerciseDto exercise17 = new ExerciseDto();
 //            exercise17.setNameExercise("przysiady").setRepetitions(12).setSeries(5);
-//            Exercise exercise18 = new Exercise();
+//            ExerciseDto exercise18 = new ExerciseDto();
 //            exercise18.setNameExercise("martwy").setRepetitions(10).setSeries(2);
-//            Exercise exercise19 = new Exercise();
+//            ExerciseDto exercise19 = new ExerciseDto();
 //            exercise19.setNameExercise("kolana").setRepetitions(8).setSeries(4);
-//            Exercise exercise20 = new Exercise();
+//            ExerciseDto exercise20 = new ExerciseDto();
 //            exercise20.setNameExercise("podciaganie").setRepetitions(12).setSeries(3);
 //
 //
-//            Exercise exercise21 = new Exercise();
+//            ExerciseDto exercise21 = new ExerciseDto();
 //            exercise21.setNameExercise("brzuszki").setRepetitions(20).setSeries(3);
-//            Exercise exercise22 = new Exercise();
+//            ExerciseDto exercise22 = new ExerciseDto();
 //            exercise22.setNameExercise("przysiady").setRepetitions(12).setSeries(5);
-//            Exercise exercise23 = new Exercise();
+//            ExerciseDto exercise23 = new ExerciseDto();
 //            exercise23.setNameExercise("martwy").setRepetitions(10).setSeries(2);
-//            Exercise exercise24 = new Exercise();
+//            ExerciseDto exercise24 = new ExerciseDto();
 //            exercise24.setNameExercise("kolana").setRepetitions(8).setSeries(4);
-//            Exercise exercise25 = new Exercise();
+//            ExerciseDto exercise25 = new ExerciseDto();
 //            exercise25.setNameExercise("podciaganie").setRepetitions(12).setSeries(3);
 //
-//            Exercise exercise26 = new Exercise();
+//            ExerciseDto exercise26 = new ExerciseDto();
 //            exercise26.setNameExercise("brzuszki").setRepetitions(20).setSeries(3);
-//            Exercise exercise27 = new Exercise();
+//            ExerciseDto exercise27 = new ExerciseDto();
 //            exercise27.setNameExercise("przysiady").setRepetitions(12).setSeries(5);
-//            Exercise exercise28 = new Exercise();
+//            ExerciseDto exercise28 = new ExerciseDto();
 //            exercise28.setNameExercise("martwy").setRepetitions(10).setSeries(2);
-//            Exercise exercise29 = new Exercise();
+//            ExerciseDto exercise29 = new ExerciseDto();
 //            exercise29.setNameExercise("kolana").setRepetitions(8).setSeries(4);
-//            Exercise exercise30 = new Exercise();
+//            ExerciseDto exercise30 = new ExerciseDto();
 //            exercise30.setNameExercise("podciaganie").setRepetitions(12).setSeries(3);
 //
 //
-//            Exercise exercise31 = new Exercise();
+//            ExerciseDto exercise31 = new ExerciseDto();
 //            exercise31.setNameExercise("brzuszki").setRepetitions(20).setSeries(3);
-//            Exercise exercise32 = new Exercise();
+//            ExerciseDto exercise32 = new ExerciseDto();
 //            exercise32.setNameExercise("przysiady").setRepetitions(12).setSeries(5);
-//            Exercise exercise33 = new Exercise();
+//            ExerciseDto exercise33 = new ExerciseDto();
 //            exercise33.setNameExercise("martwy").setRepetitions(10).setSeries(2);
-//            Exercise exercise34 = new Exercise();
+//            ExerciseDto exercise34 = new ExerciseDto();
 //            exercise34.setNameExercise("kolana").setRepetitions(8).setSeries(4);
-//            Exercise exercise35 = new Exercise();
+//            ExerciseDto exercise35 = new ExerciseDto();
 //            exercise35.setNameExercise("podciaganie").setRepetitions(12).setSeries(3);
 //
 //

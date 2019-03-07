@@ -1,12 +1,33 @@
 package com.example.demo.employee.trainer;
 
+import com.example.demo.employee.EmployeesEntity;
+import com.example.demo.opinion.trainer.OpinionTrainerDto;
+
+import java.util.List;
+
 public class TrainerDto {
     private String speciality;
     private String photo;
+    private EmployeesEntity employees;
+    private List<OpinionTrainerDto> opinionTrainers;
 
-    public TrainerDto(String speciality, String photo) {
-        this.speciality = speciality;
-        this.photo = photo;
+    public TrainerDto() {
+    }
+
+    public EmployeesEntity getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(EmployeesEntity employees) {
+        this.employees = employees;
+    }
+
+    public List<OpinionTrainerDto> getOpinionTrainers() {
+        return opinionTrainers;
+    }
+
+    public void setOpinionTrainers(List<OpinionTrainerDto> opinionTrainers) {
+        this.opinionTrainers = opinionTrainers;
     }
 
     public String getSpeciality() {

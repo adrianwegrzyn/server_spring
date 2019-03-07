@@ -9,10 +9,6 @@ package com.example.demo.employee;
 
 @Repository
 public interface EmployeesRepository extends JpaRepository<EmployeesEntity,Integer> {
-    List<EmployeesEntity> findByIdEmployee (int id);
-    @Query(value = "Select * from public.employees",
-            nativeQuery = true
 
-    )
-    List<EmployeesEntity> test();
+    EmployeesEntity findByIdEmployee(int trainerId);
 }

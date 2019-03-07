@@ -1,12 +1,12 @@
-package com.example.demo.exercise;
+package com.example.demo.exercises_on_all_day.exercise;
 
-import com.example.demo.exercises_on_one_day.ExercisesOnOneDayDAO;
+import com.example.demo.exercises_on_all_day.exercises_on_one_day.ExercisesOnOneDayEntity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "com.example.demo.exercise")
-public class ExerciseDAO {
+@Table(name = "exercise",schema = "exercise")
+public class ExerciseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,16 +20,18 @@ public class ExerciseDAO {
     private int series;
 
 
-        @ManyToOne(fetch = FetchType.EAGER)
-        @JoinColumn(name="id_exercise_one_day")
-        private ExercisesOnOneDayDAO exercisesOnOneDayDAO;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="id_exercise_one_day")
+    private ExercisesOnOneDayEntity exercisesOnOneDayEntity;
 
 
-    public ExerciseDAO() {
+    public ExerciseEntity() {
     }
 
-    public void setExercisesOnOneDayDAO(ExercisesOnOneDayDAO exercisesOnOneDayDAO) {
-        this.exercisesOnOneDayDAO = exercisesOnOneDayDAO;
+
+
+    public void setExercisesOnOneDayEntity(ExercisesOnOneDayEntity exercisesOnOneDayEntity) {
+        this.exercisesOnOneDayEntity = exercisesOnOneDayEntity;
     }
 
     public int getSeries() {

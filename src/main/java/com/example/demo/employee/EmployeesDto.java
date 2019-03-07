@@ -5,6 +5,7 @@ import com.example.demo.employee.trainer.TrainerDto;
 import java.util.Date;
 
 public class EmployeesDto {
+
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
@@ -13,6 +14,10 @@ public class EmployeesDto {
 
     public EmployeesDto() {
     }
+
+
+
+
 
     public TrainerDto getTrainer() {
         return trainer;

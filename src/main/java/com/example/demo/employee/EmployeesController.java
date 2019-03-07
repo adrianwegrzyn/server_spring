@@ -15,8 +15,9 @@ public class EmployeesController {
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public void addEmployee(@RequestBody final EmployeesDto employeesDto){
+    public List<EmployeesEntity> addEmployee(@RequestBody final EmployeesDto employeesDto){
         employeesService.addEmployee(employeesDto);
+        return employeesService.showEmployees();
     }
 
     @RequestMapping(value="/show", method = RequestMethod.GET)

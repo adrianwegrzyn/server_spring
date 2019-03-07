@@ -1,8 +1,7 @@
 package com.example.demo.user;
 
-public class UsersServiceException extends Throwable {
-
-    public UsersServiceException(String message) {
+class UsersServiceException extends Exception {
+    UsersServiceException(String message) {
         super(message);
     }
 }

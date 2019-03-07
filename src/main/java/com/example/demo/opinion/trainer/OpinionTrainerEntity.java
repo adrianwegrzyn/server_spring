@@ -1,5 +1,8 @@
 package com.example.demo.opinion.trainer;
 
+import com.example.demo.employee.trainer.TrainerEntity;
+
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,8 +20,9 @@ public class OpinionTrainerEntity {
     private Date date;
     @Column(name = "message")
     private String message;
-    @Column(name = "id_trainer")
-    private int trainerId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private TrainerEntity trainerEntity;
 
     public OpinionTrainerEntity(){
     }
@@ -41,12 +45,9 @@ public class OpinionTrainerEntity {
         this.userId = userId;
     }
 
-    public int getTrainerId() {
-        return trainerId;
-    }
 
-    public void setTrainerId(int trainerId) {
-        this.trainerId = trainerId;
+    public void setTrainerEntity(TrainerEntity trainerEntity) {
+        this.trainerEntity = trainerEntity;
     }
 
     public void setDate(Date date) {
