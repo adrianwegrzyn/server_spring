@@ -1,9 +1,9 @@
 package com.example.demo.user;
 
+import com.example.demo.exception.UsersServiceException;
 import javassist.bytecode.stackmap.TypeData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,10 +30,10 @@ public class UsersController {
     @RequestMapping(value ="/add",method = RequestMethod.POST)
     public ResponseEntity addNewUser(@RequestBody final UsersDto usersDto){
         try {
-            usersService.createNewUser(usersDto);
-        } catch (UsersServiceException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        usersService.createNewUser(usersDto);
+    } catch (UsersServiceException e) {
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
         return new ResponseEntity<>(HttpStatus.CREATED);
 }
 

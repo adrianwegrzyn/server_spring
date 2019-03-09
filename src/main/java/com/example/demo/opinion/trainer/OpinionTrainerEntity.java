@@ -1,7 +1,7 @@
 package com.example.demo.opinion.trainer;
 
 import com.example.demo.employee.trainer.TrainerEntity;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,49 +22,33 @@ public class OpinionTrainerEntity {
     private String message;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_trainer")
     private TrainerEntity trainerEntity;
 
-    public OpinionTrainerEntity(){
-    }
-
-
+    public OpinionTrainerEntity(){}
 
     public int getOpinionTrainerId() {
         return opinionTrainerId;
     }
-
     public void setOpinionTrainerId(int opinionTrainerId) {
         this.opinionTrainerId = opinionTrainerId;
     }
-
     public int getUserId() {
         return userId;
     }
-
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
-
-    public void setTrainerEntity(TrainerEntity trainerEntity) {
-        this.trainerEntity = trainerEntity;
-    }
-
     public void setDate(Date date) {
         this.date = date;
+    }
+    public Date getDate() {
+        return date;
     }
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public Date getDate() {
-        return date;
-    }
-
     public String getMessage() {
         return message;
     }
-
-
-
 }

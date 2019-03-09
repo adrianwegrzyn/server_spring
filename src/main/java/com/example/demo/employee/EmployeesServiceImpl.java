@@ -26,8 +26,5 @@ public class EmployeesServiceImpl implements EmployeesService{
         ModelMapper modelMapper = new ModelMapper();
         EmployeesEntity employeesEntity = modelMapper.map(employeesDto, EmployeesEntity.class);
         employeesRepository.save(employeesEntity);
-
-
     }
 }
-

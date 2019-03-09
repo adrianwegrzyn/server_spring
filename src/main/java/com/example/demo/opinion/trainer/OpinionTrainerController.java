@@ -1,8 +1,12 @@
 package com.example.demo.opinion.trainer;
 
+import com.example.demo.exception.EmployeeNoExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,8 +25,14 @@ public class OpinionTrainerController {
     }
 
     @RequestMapping(value ="/trainer/send", method = RequestMethod.POST)
-    public void sendOpinionDiet(@RequestBody final OpinionTrainerDto opinionTrainerDAO){
-        opinionTrainerServices.saveOpinionTrainer(opinionTrainerDAO);
+    public ResponseEntity sendOpinionDiet(@RequestBody final OpinionTrainerDto opinionTrainerDAO){
+        try {
+            opinionTrainerServices.saveOpinionTrainer(opinionTrainerDAO);
+        } catch (EmployeeNoExistException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

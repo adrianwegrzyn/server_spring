@@ -8,19 +8,11 @@ import java.util.List;
 public class TrainerDto {
     private String speciality;
     private String photo;
-    private EmployeesEntity employees;
     private List<OpinionTrainerDto> opinionTrainers;
 
-    public TrainerDto() {
-    }
+    public TrainerDto() { }
 
-    public EmployeesEntity getEmployees() {
-        return employees;
-    }
 
-    public void setEmployees(EmployeesEntity employees) {
-        this.employees = employees;
-    }
 
     public List<OpinionTrainerDto> getOpinionTrainers() {
         return opinionTrainers;

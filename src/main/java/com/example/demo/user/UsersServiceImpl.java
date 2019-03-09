@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import com.example.demo.exception.UsersServiceException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

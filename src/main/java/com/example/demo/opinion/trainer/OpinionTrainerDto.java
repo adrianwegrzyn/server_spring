@@ -11,13 +11,7 @@ public class OpinionTrainerDto {
     private Date date;
     private String message;
 
-
-    public OpinionTrainerDto(){
-    }
-
-
-
-
+    public OpinionTrainerDto(){ }
 
     public int getUserId() {
         return userId;
@@ -25,19 +19,14 @@ public class OpinionTrainerDto {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-    public int getTrainerId() {
-        return trainerId;
-    }
-    public void setTrainerId(int trainerId) {
-        this.trainerId = trainerId;
-    }
+    public int getTrainerId() { return trainerId; }
+    public void setTrainerId(int trainerId) { this.trainerId = trainerId; }
     public void setDate(Date date) {
         this.date = date;
     }
     public void setMessage(String message) {
         this.message = message;
     }
-
     public Date getDate() {
         return date;
     }
@@ -45,7 +34,4 @@ public class OpinionTrainerDto {
         return message;
     }
 
-
-
 }
-
