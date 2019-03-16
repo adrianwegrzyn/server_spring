@@ -1,5 +1,6 @@
 package com.example.demo.employee;
 
+import com.example.demo.auth.AuthenticationEntity;
 import com.example.demo.employee.trainer.TrainerEntity;
 import javax.persistence.*;
 import java.util.Date;
@@ -26,7 +27,19 @@ public class EmployeesEntity {
     @JoinColumn(name = "id_trainer")
     private TrainerEntity trainer;
 
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "authenticationEntity")
+    private AuthenticationEntity authenticationEntity;
+
     public EmployeesEntity() {
+    }
+
+    public AuthenticationEntity getAuthenticationEntity() {
+        return authenticationEntity;
+    }
+
+    public void setAuthenticationEntity(AuthenticationEntity authenticationEntity) {
+        this.authenticationEntity = authenticationEntity;
     }
 
     public TrainerEntity getTrainer() {

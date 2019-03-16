@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.auth.AuthenticationEntity;
+import com.example.demo.auth.AuthenticationRepository;
 import com.example.demo.user.UsersEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,7 +37,7 @@ public class DemoApplication {
 class DataJpaConfig {
 
     @Bean
-    public AuditorAware<UsersEntity> auditor() {
+    public AuditorAware<AuthenticationEntity> auditor() {
         return () -> {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -43,7 +45,7 @@ class DataJpaConfig {
                 return Optional.empty();
             }
 
-            return Optional.of((UsersEntity) authentication.getPrincipal());
+            return Optional.of((AuthenticationEntity) authentication.getPrincipal());
         };
     }
 }

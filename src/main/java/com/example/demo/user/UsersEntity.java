@@ -1,6 +1,7 @@
 package com.example.demo.user;
 
 
+import com.example.demo.auth.AuthenticationEntity;
 import com.example.demo.user.body.BodyEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,52 +27,32 @@ import static java.util.stream.Collectors.toList;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsersEntity implements UserDetails {
+public class UsersEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long idUser;
-    @NotEmpty
-    @Column(name = "username")
-    private String username;
     @Column(name="e_mail")
     private String email;
     @Column(name="photo")
     private String photo;
     @Column(name="data_of_birth")
     private String dateOfBirth;
-    @NotEmpty
-    @Column(name="password")
-    private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_body")
     private BodyEntity body;
 
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Builder.Default
-    private List<String> roles = new ArrayList<>();
-
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "authenticationEntity")
+    private AuthenticationEntity authenticationEntity;
 
 
 
     public void setBody(BodyEntity body) {
         this.body = body;
     }
-
-
 
     public String getEmail() {
         return email;
@@ -97,48 +78,8 @@ public class UsersEntity implements UserDetails {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
-
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 
 
 }

@@ -1,14 +1,22 @@
 package com.example.demo.user;
 
+import com.example.demo.auth.AuthenticationEntity;
 import com.example.demo.user.body.BodyDto;
 
 public class UsersDto {
-    private String nick;
     private String email;
     private String photo;
     private String dateOfBirth;
-    private String password;
     private BodyDto body;
+    private AuthenticationEntity authenticationEntity;
+
+    public AuthenticationEntity getAuthenticationEntity() {
+        return authenticationEntity;
+    }
+
+    public void setAuthenticationEntity(AuthenticationEntity authenticationEntity) {
+        this.authenticationEntity = authenticationEntity;
+    }
 
     public BodyDto getBody() {
         return body;
@@ -18,13 +26,7 @@ public class UsersDto {
         this.body = body;
     }
 
-    public String getNick() {
-        return nick;
-    }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
 
     public String getPhoto() {
         return photo;
@@ -34,13 +36,7 @@ public class UsersDto {
         this.photo = photo;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getEmail() {
         return email;

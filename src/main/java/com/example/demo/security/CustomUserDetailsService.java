@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import com.example.demo.auth.AuthenticationRepository;
 import com.example.demo.user.UsersRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private UsersRepository users;
+    private AuthenticationRepository users;
 
-    public CustomUserDetailsService(UsersRepository users) {
+    public CustomUserDetailsService(AuthenticationRepository users) {
         this.users = users;
     }
 

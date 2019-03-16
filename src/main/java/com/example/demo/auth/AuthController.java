@@ -33,13 +33,13 @@ public class AuthController {
     JwtTokenProvider jwtTokenProvider;
 
     final
-    UsersRepository users;
+    AuthenticationRepository users;
     final
 
     PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UsersRepository users, PasswordEncoder passwordEncoder) {
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, AuthenticationRepository users, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.users = users;
@@ -67,7 +67,7 @@ public class AuthController {
         }
     }
     @PostMapping("/rejestration")
-    public List<UsersEntity> rejestration(@RequestBody UsersEntity user) {
+    public List<AuthenticationEntity> rejestration(@RequestBody AuthenticationEntity user) {
         String password = user.getPassword();
         user.setPassword(this.passwordEncoder.encode(password));
 
