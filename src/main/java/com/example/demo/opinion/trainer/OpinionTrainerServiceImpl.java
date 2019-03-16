@@ -26,7 +26,7 @@ public class OpinionTrainerServiceImpl implements OpinionTrainerService {
     public List<OpinionTrainerEntity> getAllOpinionTrainer() {
         return opinionTrainerRepository.findAll();
     }
-    
+
     @Override
     public void saveOpinionTrainer(OpinionTrainerDto opinionTrainerDTO) throws EmployeeNoExistException {
         EmployeesEntity employeesEntity = employeesRepository.findByIdEmployee(opinionTrainerDTO.getTrainerId());

@@ -34,7 +34,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public Optional<UsersEntity> showUser(String userId) {
-        return userRepository.findById(Integer.parseInt(userId));
+        return userRepository.findById((long) Integer.parseInt(userId));
     }
 
 

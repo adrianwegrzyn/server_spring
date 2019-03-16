@@ -20,7 +20,7 @@ public class BodyEntity {
     public BodyEntity() {
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_body")
     private List<BodyMeasurementsEntity> bodyMeasurements;
 
