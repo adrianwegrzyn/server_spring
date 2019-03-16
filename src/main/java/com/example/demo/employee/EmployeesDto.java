@@ -11,19 +11,27 @@ public class EmployeesDto {
     private String lastName;
     private Date dateOfBirth;
     private Double salary;
+    private String email;
     private TrainerDto trainer;
-    private AuthenticationEntity authenticationEntity;
+    private AuthenticationEntity authentication;
 
     public EmployeesDto() {
     }
 
-
-    public AuthenticationEntity getAuthenticationEntity() {
-        return authenticationEntity;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAuthenticationEntity(AuthenticationEntity authenticationEntity) {
-        this.authenticationEntity = authenticationEntity;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public AuthenticationEntity getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(AuthenticationEntity authentication) {
+        this.authentication = authentication;
     }
 
     public TrainerDto getTrainer() {

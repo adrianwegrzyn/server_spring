@@ -1,6 +1,9 @@
 package com.example.demo.employee;
 
+import com.example.demo.exception.EmployeeNoExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -15,9 +18,13 @@ public class EmployeesController {
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public List<EmployeesEntity> addEmployee(@RequestBody final EmployeesDto employeesDto){
-        employeesService.addEmployee(employeesDto);
-        return employeesService.showEmployees();
+    public ResponseEntity addEmployee(@RequestBody final EmployeesDto employeesDto) {
+        try {
+            employeesService.addEmployee(employeesDto);
+        } catch (EmployeeNoExistException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/show", method = RequestMethod.GET)

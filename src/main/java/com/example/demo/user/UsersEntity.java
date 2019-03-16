@@ -23,10 +23,6 @@ import static java.util.stream.Collectors.toList;
 
 @Entity
 @Table(name = "users",schema = "users")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class UsersEntity {
 
     @Id
@@ -48,7 +44,16 @@ public class UsersEntity {
     @JoinColumn(name = "authenticationEntity")
     private AuthenticationEntity authenticationEntity;
 
+    public UsersEntity() {
+    }
 
+    public AuthenticationEntity getAuthenticationEntity() {
+        return authenticationEntity;
+    }
+
+    public void setAuthenticationEntity(AuthenticationEntity authenticationEntity) {
+        this.authenticationEntity = authenticationEntity;
+    }
 
     public void setBody(BodyEntity body) {
         this.body = body;

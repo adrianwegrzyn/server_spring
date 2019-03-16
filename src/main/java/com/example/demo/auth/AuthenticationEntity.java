@@ -2,7 +2,6 @@ package com.example.demo.auth;
 
 import com.example.demo.employee.EmployeesEntity;
 import com.example.demo.user.UsersEntity;
-import com.example.demo.user.body.BodyEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,8 +25,8 @@ import static java.util.stream.Collectors.toList;
 @AllArgsConstructor
 public class AuthenticationEntity implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotEmpty
     private String username;

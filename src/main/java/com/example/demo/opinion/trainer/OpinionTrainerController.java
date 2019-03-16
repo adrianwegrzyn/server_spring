@@ -29,7 +29,6 @@ public class OpinionTrainerController {
         try {
             opinionTrainerServices.saveOpinionTrainer(opinionTrainerDAO);
         } catch (EmployeeNoExistException e) {
-            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);

@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface UsersService {
     void createNewUser(UsersDto users) throws UsersServiceException;
-    UsersEntity checkExistUser(String emailUser);
+    boolean checkExistUser(String emailUser, String username);
     Optional<UsersEntity> showUser(String userId);
 }

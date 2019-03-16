@@ -8,14 +8,18 @@ public class UsersDto {
     private String photo;
     private String dateOfBirth;
     private BodyDto body;
-    private AuthenticationEntity authenticationEntity;
+    private AuthenticationEntity authentication;
 
-    public AuthenticationEntity getAuthenticationEntity() {
-        return authenticationEntity;
+    public UsersDto() {
     }
 
-    public void setAuthenticationEntity(AuthenticationEntity authenticationEntity) {
-        this.authenticationEntity = authenticationEntity;
+
+    public AuthenticationEntity getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(AuthenticationEntity authentication) {
+        this.authentication = authentication;
     }
 
     public BodyDto getBody() {
@@ -26,8 +30,6 @@ public class UsersDto {
         this.body = body;
     }
 
-
-
     public String getPhoto() {
         return photo;
     }
@@ -36,15 +38,11 @@ public class UsersDto {
         this.photo = photo;
     }
 
-
-
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getEmail() { return email; }
 
     public String getDateOfBirth() {
         return dateOfBirth;

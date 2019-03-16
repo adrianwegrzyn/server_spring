@@ -20,6 +20,8 @@ public class EmployeesEntity {
     @Temporal(TemporalType.DATE)
     @Column(name="date_of_birth")
     private Date dateOfBirth;
+    @Column(name="email")
+    private String email;
     @Column(name="salary")
     private Double salary;
 
@@ -32,6 +34,14 @@ public class EmployeesEntity {
     private AuthenticationEntity authenticationEntity;
 
     public EmployeesEntity() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public AuthenticationEntity getAuthenticationEntity() {

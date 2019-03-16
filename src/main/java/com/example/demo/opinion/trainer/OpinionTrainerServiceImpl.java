@@ -31,7 +31,7 @@ public class OpinionTrainerServiceImpl implements OpinionTrainerService {
     public void saveOpinionTrainer(OpinionTrainerDto opinionTrainerDTO) throws EmployeeNoExistException {
         EmployeesEntity employeesEntity = employeesRepository.findByIdEmployee(opinionTrainerDTO.getTrainerId());
             if(employeesEntity == null) {
-                throw new EmployeeNoExistException();
+                throw new EmployeeNoExistException("Employee not exist");
             }
 
         OpinionTrainerEntity opinionTrainerEntity = new OpinionTrainerEntity();

@@ -10,6 +10,6 @@ package com.example.demo.employee;
 
 @Repository
 public interface EmployeesRepository extends JpaRepository<EmployeesEntity,Integer> {
-
-    EmployeesEntity findByIdEmployee(int trainerId);
+        EmployeesEntity findByIdEmployee(int trainerId);
+        EmployeesEntity findByEmail(String emailUser);
 }
