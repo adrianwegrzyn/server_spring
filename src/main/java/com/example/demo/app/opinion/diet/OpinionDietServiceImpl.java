@@ -1,0 +1,32 @@
+package com.example.demo.app.opinion.diet;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class OpinionDietServiceImpl implements OpinionDietService {
+
+    final private OpinionDietRepository opinionDietRepository;
+
+    @Autowired
+    public OpinionDietServiceImpl(OpinionDietRepository opinionDietRepository) {
+        this.opinionDietRepository = opinionDietRepository;
+    }
+
+    @Override
+    public List<OpinionDietEntity> getAllOpinionDiet(){
+//        ModelMapper modelMapper = new ModelMapper();
+//        List<OpinionDietEntity> opinionDietEntities = opinionDietRepository.findAll();
+        return opinionDietRepository.findAll();
+    }
+
+    @Override
+    public void saveOpinionDiet(OpinionDietDto opinionDietDto,String username) {
+        ModelMapper modelMapper = new ModelMapper();
+        OpinionDietEntity opinionDietEntity = modelMapper.map(opinionDietDto, OpinionDietEntity.class);
+        opinionDietRepository.save(opinionDietEntity);
+    }
+}
+
