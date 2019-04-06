@@ -4,7 +4,6 @@ import com.example.demo.app.auth.AuthenticationEntity;
 import com.example.demo.app.opinion.diet.OpinionDietEntity;
 import com.example.demo.app.opinion.trainer.OpinionTrainerEntity;
 import com.example.demo.app.user.body.BodyEntity;
-import com.example.demo.web.chat.ChatEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -50,19 +49,7 @@ public class UsersEntity {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_chat")
     @JsonIgnore
-    private List<ChatEntity> chat;
 
-
-    public UsersEntity() {
-    }
-
-    public List<ChatEntity> getChat() {
-        return chat;
-    }
-
-    public void setChat(List<ChatEntity> chat) {
-        this.chat = chat;
-    }
 
     public BodyEntity getBody() {
         return body;
@@ -127,9 +114,4 @@ public class UsersEntity {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
-
-
-
-
 }
